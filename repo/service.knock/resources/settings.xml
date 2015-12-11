@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings>
+  <setting id="server_name" type="text" default="Server" label="Server name"/>
+  <setting id="server_address" type="text" default="www.example.com" label="Server address (Domain or IP)"/>
+  <setting id="server_port" type="number" default="80" label="Server port (to check access)"/>
+  <setting id="interval" type="number" default="120" label="Check interval (s)"/>
+  <setting id="sequence" type="text" default="6661,6662,6663" label="Knock sequence"/>
+</settings>
