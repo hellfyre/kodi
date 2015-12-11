@@ -67,7 +67,7 @@ class KnockThread (threading.Thread):
     for port in self.sequence:
       try:
         self.sock = socket.socket()
-        self.sock.connect((self.server_address, port))
+        self.sock.connect((self.server_address, int(port)))
       except socket.error as e:
         if e.errno == errno.ECONNREFUSED:
           self.logdebug('Knocking on ' + self.server_address + ':' + str(port))
