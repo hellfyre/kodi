@@ -1,0 +1,3 @@
+# service.knock [1.1] - 2015-12-10 
+
+  * Added settings
