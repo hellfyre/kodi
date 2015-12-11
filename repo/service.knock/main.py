@@ -36,12 +36,12 @@ class KnockThread (threading.Thread):
     while(not xbmc.abortRequested):
       if(self.counter == 120):
         self.counter = 0
-        while not self.cupcake_reachable():
+        while not self.server_reachable():
           self.access_refused = True
           xbmc.executebuiltin('xbmc.Notification(%s, %s, 3000, %s)' % (self.server_name, 'Knocking...', icon))
           self.knock()
           time.sleep(10)
-        self.loginfo('I have access to cupcake')
+        self.loginfo('I have access to ' + self.server_name)
         if self.access_refused:
           xbmc.executebuiltin('xbmc.Notification(%s, %s, 3000, %s)' % (self.server_name, 'Open sesame :)', icon))
           self.access_refused = False
@@ -49,17 +49,17 @@ class KnockThread (threading.Thread):
       time.sleep(1)
       self.counter += 1
 
-  def cupcake_reachable(self):
-    self.logdebug('Trying to reach cupcake...')
+  def server_reachable(self):
+    self.logdebug('Trying to reach ' + self.server_name + '...')
     try:
       self.sock = socket.socket()
       self.sock.settimeout(10.0)
       self.sock.connect((self.server_address, self.server_port))
     except:
       self.sock.close()
-      self.logdebug('cupcake_reachable: False')
+      self.logdebug('server_reachable: False')
       return False
-    self.logdebug('cupcake_reachable: True')
+    self.logdebug('server_reachable: True')
     return True
 
   def knock(self):
